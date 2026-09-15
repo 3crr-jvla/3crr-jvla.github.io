@@ -229,6 +229,23 @@ figcaption { font-size: 0.85rem; color: var(--dim); margin-top: 0.8em; }
   background: #000;
 }
 
+/* the status banner on the overview page */
+.status {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 22px 26px;
+}
+.status p { color: var(--muted); max-width: 54em; }
+.status strong { color: var(--text); }
+.status-date { font-size: 0.82rem; color: var(--dim); margin: 0; white-space: nowrap; }
+
 .note {
   border-left: 3px solid var(--accent);
   background: rgba(255, 143, 69, 0.07);

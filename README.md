@@ -30,7 +30,9 @@ Search the HTML files for **`TO DO`**. Each one is also visible on the rendered
 page as an orange dashed box, so nothing can be forgotten by accident. As of
 now:
 
-- `team.html` — the real investigator list and a contact address
+- `team.html` — a contact address for the project
+- `science.html` — the direct ADS link for the 3C 390.3 figure reference (currently an ADS search)
+- `index.html` — the date on the Status banner, whenever the status wording changes
 - `publications.html` — survey papers, as they appear
 - `data.html` — release status, where the FITS images will be served from, and
   the acknowledgement text
