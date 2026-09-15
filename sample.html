@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sample &middot; 3CRR JVLA Legacy Survey</title>
+<meta name="description" content="The 73 3CRR radio galaxies at z &lt; 1 targeted by the JVLA Large Programme, with selection criteria and observing status.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><b>3CRR</b> JVLA <span>/ Legacy Survey</span></a>
+    <nav class="main">
+      <a href="index.html">Overview</a>
+      <a href="science.html">Science</a>
+      <a href="sample.html" class="active">Sample</a>
+      <a href="data.html">Data</a>
+      <a href="team.html">Team</a>
+      <a href="publications.html">Publications</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap page-head narrow">
+  <div class="eyebrow">Sample</div>
+  <h1>73 3CRR radio galaxies at <em>z</em>&nbsp;&lt;&nbsp;1</h1>
+  <p class="lede">
+    Selected from the 3CRR catalogue of the brightest radio galaxies in the northern sky, where multi-wavelength
+    &mdash; particularly X-ray &mdash; coverage is near-complete.
+  </p>
+</div>
+
+<section class="band">
+  <div class="wrap narrow">
+    <h2>Selection</h2>
+    <dl class="spec">
+      <dt>Redshift <em>z</em> &lt; 1</dt>
+      <dd>Maximises value-added science for the community, where X-ray observations are near-complete for the sample.</dd>
+
+      <dt>Angular size between 20&Prime; and 240&Prime;</dt>
+      <dd>
+        The lower bound ensures at least 15 beams across each radio source (given the 1.2&Prime; maximum resolution
+        at L-band), allowing resolved spectral and polarimetric analysis. The upper bound keeps angular sizes within
+        the largest angular scale of emission sensitive to the D-array at C-band, so integrated fluxes can be
+        determined.
+      </dd>
+
+      <dt>Missing JVLA coverage</dt>
+      <dd>
+        57 of the 73 objects have no L- or C-band JVLA observations in any array configuration. Time is requested
+        per source only where those data are absent from the archive or from our other projects.
+      </dd>
+    </dl>
+    <p style="margin-top:1.6em">
+      The resulting sample spans a wide range of morphologies and environments. More than 30 objects have X-ray jets
+      and hotspots, and all are suspected to contain large-scale filaments.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Target list</h2>
+
+    <!-- ===================================================================
+         TO DO — replace data/sources.csv with the real 73-source list.
+         The table below is generated from that file; nothing here needs
+         editing. Delete this <div class="todo"> block once the list is final.
+         =================================================================== -->
+    <div class="todo">
+      The table below is currently showing a handful of example rows so you can see the layout.
+      Replace <code>data/sources.csv</code> with the full list of 73 targets &mdash; the page will pick it up
+      automatically. Column headings, sorting and the filter menu all come from that file.
+    </div>
+
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search source, IAU name, notes…" aria-label="Search the target list">
+      <select id="status-filter" aria-label="Filter by observing status">
+        <option value="">All statuses</option>
+      </select>
+      <span class="count" id="count"></span>
+    </div>
+
+    <p class="note" id="table-error" hidden></p>
+
+    <div class="table-scroll">
+      <table>
+        <thead><tr id="source-head"></tr></thead>
+        <tbody id="source-rows"></tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:1.2rem" class="count">
+      Download the list as <a href="data/sources.csv">CSV</a>.
+      Positions and redshifts follow the 3CRR catalogue
+      (<a href="https://3crr.extragalactic.info/">3crr.extragalactic.info</a>).
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap narrow">
+    <h2>Observing strategy</h2>
+    <p>
+      Per source, and only where we lack these data in the archive or in our other projects, we observe
+      1&nbsp;hour in the A-array, 30&nbsp;minutes in B, 15&nbsp;minutes in C and 5&nbsp;minutes in D. Scheduling
+      permitting, observations of different sources are interleaved to improve <em>uv</em> coverage.
+    </p>
+    <p>
+      Accounting for 40% overheads due to slew times and polarisation calibration, this totals
+      218.3&nbsp;hours in the A-array, 92.5&nbsp;hours in B, 31.7&nbsp;hours in C and 2.5&nbsp;hours in D &mdash;
+      <strong>345 hours</strong>. Full polarimetric observations use the 8-bit samplers at L-band and the 3-bit
+      samplers at C-band.
+    </p>
+    <div class="table-scroll" style="margin-top:1.6rem">
+      <table>
+        <thead>
+          <tr><th>Array</th><th>Per source</th><th>Total requested</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>1 hour</td><td>218.3 h</td></tr>
+          <tr><td>B</td><td>30 min</td><td>92.5 h</td></tr>
+          <tr><td>C</td><td>15 min</td><td>31.7 h</td></tr>
+          <tr><td>D</td><td>5 min</td><td>2.5 h</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <strong>3CRR JVLA Legacy Survey</strong><br>
+      A JVLA Large Programme.
+    </div>
+    <div>
+      <a href="data.html">Data</a> &nbsp;&middot;&nbsp;
+      <a href="team.html">Team</a> &nbsp;&middot;&nbsp;
+      <a href="publications.html">Publications</a> &nbsp;&middot;&nbsp;
+      <a href="https://science.nrao.edu/facilities/vla">NRAO / VLA</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/sample-table.js"></script>
+</body>
+</html>

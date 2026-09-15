@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Data products &middot; 3CRR JVLA Legacy Survey</title>
+<meta name="description" content="Data products, processing pipelines and the release policy for the 3CRR JVLA Large Programme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><b>3CRR</b> JVLA <span>/ Legacy Survey</span></a>
+    <nav class="main">
+      <a href="index.html">Overview</a>
+      <a href="science.html">Science</a>
+      <a href="sample.html">Sample</a>
+      <a href="data.html" class="active">Data</a>
+      <a href="team.html">Team</a>
+      <a href="publications.html">Publications</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap page-head narrow">
+  <div class="eyebrow">Data</div>
+  <h1>Data products and release</h1>
+  <p class="lede">
+    Given the scientific potential unlocked by this project, the JVLA observations are released
+    instantaneously, with no proprietary period.
+  </p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="narrow">
+      <h2>Release status</h2>
+      <div class="todo">
+        Replace this box with the current status once observations begin &mdash; for example
+        &ldquo;Observations began in <em>month/year</em>; first data products expected <em>month/year</em>.&rdquo;
+        Until then it is worth stating plainly that no products are available yet, so visitors
+        (and NRAO) can see the page is live and maintained.
+      </div>
+      <p style="margin-top:1.6rem">
+        Images will be listed here per source as they are produced, alongside the observing status in the
+        <a href="sample.html">target list</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap narrow">
+    <h2>Planned products</h2>
+    <p>For all 73 objects in the sample, at 0.3&Prime; or 1&Prime; resolution (objects at L-band without e-MERLIN data):</p>
+    <ul class="tight">
+      <li>Final Stokes <em>I</em> maps, as compressed FITS images</li>
+      <li>De-rotated Stokes <em>Q</em> and <em>U</em> maps</li>
+      <li>Linearly polarised intensity maps</li>
+      <li>Spectral and Faraday depth cubes &mdash; available on request</li>
+      <li>The 0.3&Prime; and 1&Prime; LOFAR 144&nbsp;MHz maps already produced by our team for 19 of the 73 objects</li>
+    </ul>
+    <p>
+      Using our calibration techniques we expect to reach theoretical noise levels of
+      10&nbsp;&micro;Jy&nbsp;beam<sup>&minus;1</sup> at L-band and 5&nbsp;&micro;Jy&nbsp;beam<sup>&minus;1</sup> at
+      C-band, except for the brightest sources, which will be dynamic-range limited &mdash; making <em>uv</em>
+      coverage, rather than deeper observations, the essential ingredient.
+    </p>
+
+    <div class="todo" style="margin-top:2rem">
+      Decide where the FITS images will actually be served from, and link it here. The proposal specifies storage
+      and compute at the University of Hertfordshire HPC facility for the ~10&nbsp;TB of raw data. Options for the
+      released images are a public directory at UH, the NRAO archive, or a Zenodo deposit with a DOI &mdash; the
+      last of these gives you something citable in papers. GitHub Pages itself is not suitable for FITS files
+      (repositories are limited to about 1&nbsp;GB, with a 100&nbsp;MB cap per file), so this page should link out
+      rather than host.
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap narrow">
+    <h2>Processing</h2>
+    <p>
+      Our science goals and legacy value rely on thermal-noise (or dynamic-range) limited maps. The JVLA WIDAR
+      correlator is well tested to produce dynamic ranges between 10<sup>3</sup> and 10<sup>6</sup> after
+      polarisation and self-calibration. There is currently no dedicated, publicly available, fully automated
+      polarisation and self-calibration pipeline for high dynamic range imaging of JVLA data.
+    </p>
+    <p>
+      We have developed polarisation and self-calibration pipelines dedicated to JVLA mapping at high dynamic
+      range, and continue to develop both with the aim of fully automating the processing for all objects after
+      they have been through the standard VLA calibration pipeline. We are also assessing the validity of baseline
+      corrections (CASA <code>BLCAL</code>), which with sufficient <em>uv</em> coverage can substantially improve
+      the dynamic range.
+    </p>
+    <div class="btn-row">
+      <a class="btn ghost" href="https://github.com/vmahat/vla_polcal">vla_polcal &rarr;</a>
+      <a class="btn ghost" href="https://github.com/vmahat/vla_selfcal">vla_selfcal &rarr;</a>
+    </div>
+    <p style="margin-top:2rem">
+      Raw data volume is expected to reach 10&nbsp;TB, for which we have ample storage and compute processing
+      nodes through the University of Hertfordshire High Performance Computing facility.
+    </p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap narrow">
+    <h2>Using the data</h2>
+    <div class="todo">
+      Add your preferred acknowledgement text here once the project code is assigned, so that anyone using the
+      products cites the survey consistently. A typical form is: &ldquo;This work makes use of data from the
+      3CRR JVLA Legacy Survey (NRAO project <em>code</em>). The National Radio Astronomy Observatory is a
+      facility of the National Science Foundation operated under cooperative agreement by Associated
+      Universities, Inc.&rdquo;
+    </div>
+    <p style="margin-top:1.6rem">
+      Questions about the data products are welcome &mdash; see <a href="team.html">contacts</a>.
+    </p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <strong>3CRR JVLA Legacy Survey</strong><br>
+      A JVLA Large Programme.
+    </div>
+    <div>
+      <a href="data.html">Data</a> &nbsp;&middot;&nbsp;
+      <a href="team.html">Team</a> &nbsp;&middot;&nbsp;
+      <a href="publications.html">Publications</a> &nbsp;&middot;&nbsp;
+      <a href="https://science.nrao.edu/facilities/vla">NRAO / VLA</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

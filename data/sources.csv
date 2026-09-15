@@ -1,0 +1,20 @@
+﻿# ---------------------------------------------------------------------------
+# 3CRR JVLA Legacy Survey — target list
+#
+# THIS FILE IS A TEMPLATE. Replace the rows below with the real 73 targets.
+# The Sample page reads this file directly, so editing it updates the website.
+#
+# Rules:
+#   - Keep the header row exactly as it is (the column names are used by the page).
+#   - One source per line, comma separated. Lines starting with # are ignored.
+#   - If a value is unknown, leave it empty — the page will show a dash.
+#   - "status" is free text and drives the filter menu. Suggested values:
+#       Scheduled / Observed / Calibrated / Imaged / Released
+#   - If a field contains a comma, wrap it in "double quotes".
+# ---------------------------------------------------------------------------
+name,iau_name,ra_j2000,dec_j2000,z,size_arcsec,fr_class,arrays,status,notes
+3C 20,0040+517,00:43:09.2,+52:03:37,0.174,,II,"A, B",Observed,Pilot project 24B-425 / 25B-352
+3C 34,0122+329,01:10:18.6,+31:47:19,0.6897,,II,"A, B, C",Scheduled,LOFAR 0.3 arcsec map available
+3C 123,0433+295,04:37:04.4,+29:40:14,0.2177,,II,"A, B",Observed,Pilot project 24B-425 / 25B-352
+3C 272.1,1222+131,12:25:03.7,+12:53:13,0.0035,,I,"A, B, C, D",Scheduled,M 84 / e-MERLIN Jets Legacy target
+3C 288,1336+391,13:38:50.0,+38:51:11,0.246,,II,"A, B, C",Scheduled,LOFAR 0.3 arcsec map available
