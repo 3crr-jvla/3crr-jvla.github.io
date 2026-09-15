@@ -30,8 +30,8 @@
   <div class="eyebrow">Sample</div>
   <h1>73 3CRR radio galaxies at <em>z</em>&nbsp;&lt;&nbsp;1</h1>
   <p class="lede">
-    Selected from the 3CRR catalogue of the brightest radio galaxies in the northern sky, where multi-wavelength
-    &mdash; particularly X-ray &mdash; coverage is near-complete.
+    Selected from the 172 entries of the 3CRR catalogue &mdash; the brightest radio galaxies in the northern
+    sky, where multi-wavelength and particularly X-ray coverage is near-complete.
   </p>
 </div>
 
@@ -52,54 +52,78 @@
 
       <dt>Missing JVLA coverage</dt>
       <dd>
-        57 of the 73 objects have no L- or C-band JVLA observations in any array configuration. Time is requested
-        per source only where those data are absent from the archive or from our other projects.
+        <!-- 55 is the count from data/sources.csv: sources with no "archival" entry in any of the seven
+             band/array columns. The proposal quotes 57; check which is current before publishing. -->
+        55 of the 73 objects have no L- or C-band JVLA observations in any array configuration. Time is requested
+        per source only where those data are absent from the archive or from our other projects &mdash; the
+        outlined chips in the table below mark the configurations already covered.
       </dd>
     </dl>
     <p style="margin-top:1.6em">
-      The resulting sample spans a wide range of morphologies and environments. More than 30 objects have X-ray jets
-      and hotspots, and all are suspected to contain large-scale filaments.
+      Of the 172 catalogue entries, 37 lie at <em>z</em>&nbsp;&ge;&nbsp;1, 26 exceed 240&Prime;, 35 are too
+      compact to resolve, and one has no tabulated angular size &mdash; leaving the 73 targets of this
+      programme. The resulting sample spans a wide range of morphologies and environments. More than 30 objects
+      have X-ray jets and hotspots, and all are suspected to contain large-scale filaments.
     </p>
   </div>
 </section>
 
 <section class="band">
-  <div class="wrap">
-    <h2>Target list</h2>
+  <div class="wrap-wide">
+    <h2>The catalogue and our targets</h2>
+    <div class="narrow">
+      <p>
+        The table lists the complete 3CRR catalogue. The <strong>73 targets of this programme are
+        highlighted</strong>; every other entry carries the reason it falls outside the selection. For the
+        targets, the <strong>L-band</strong> and <strong>C-band</strong> columns show the array configurations
+        in which each source will have data. Click any column heading to sort; hover a chip for the exact time.
+      </p>
+    </div>
 
-    <!-- ===================================================================
-         TO DO — replace data/sources.csv with the real 73-source list.
-         The table below is generated from that file; nothing here needs
-         editing. Delete this <div class="todo"> block once the list is final.
-         =================================================================== -->
-    <div class="todo">
-      The table below is currently showing a handful of example rows so you can see the layout.
-      Replace <code>data/sources.csv</code> with the full list of 73 targets &mdash; the page will pick it up
-      automatically. Column headings, sorting and the filter menu all come from that file.
+    <div class="legend">
+      <span class="k"><span class="chip chip-new">A</span> New observation in this programme</span>
+      <span class="k"><span class="chip chip-archival">A</span> Existing archival data</span>
+      <span class="k"><span class="chip chip-none">A</span> Not required for this source</span>
     </div>
 
     <div class="controls">
-      <input id="search" type="search" placeholder="Search source, IAU name, notes…" aria-label="Search the target list">
-      <select id="status-filter" aria-label="Filter by observing status">
-        <option value="">All statuses</option>
+      <input id="search" type="search" placeholder="Search source name or position…" aria-label="Search the catalogue">
+      <select id="coverage-filter" aria-label="Filter the catalogue">
+        <option value="">All 172 catalogue entries</option>
+        <optgroup label="This programme">
+          <option value="sample">The 73 targets</option>
+          <option value="new">Targets with new observations</option>
+          <option value="archival">Targets fully covered by the archive</option>
+        </optgroup>
+        <optgroup label="Outside the selection">
+          <option value="out">All excluded entries</option>
+          <option value="z">Excluded: z ≥ 1</option>
+          <option value="las">Excluded: LAS ≥ 240″</option>
+          <option value="compact">Excluded: compact</option>
+        </optgroup>
       </select>
       <span class="count" id="count"></span>
     </div>
 
     <p class="note" id="table-error" hidden></p>
 
-    <div class="table-scroll">
+    <div class="table-scroll tall">
       <table>
         <thead><tr id="source-head"></tr></thead>
         <tbody id="source-rows"></tbody>
       </table>
     </div>
 
-    <p style="margin-top:1.2rem" class="count">
-      Download the list as <a href="data/sources.csv">CSV</a>.
-      Positions and redshifts follow the 3CRR catalogue
-      (<a href="https://3crr.extragalactic.info/">3crr.extragalactic.info</a>).
-    </p>
+    <div class="narrow">
+      <p style="margin-top:1.4rem" class="count">
+        Download the full catalogue as <a href="data/sources.csv">CSV</a>, with the
+        <code>in_sample</code> column flagging our targets. Times are <strong>on-source minutes</strong>,
+        excluding JVLA overheads; the 345&nbsp;hours requested includes them. Redshifts, 178&nbsp;MHz flux
+        densities, spectral indices and angular sizes follow the 3CRR catalogue
+        (<a href="https://3crr.extragalactic.info/">3crr.extragalactic.info</a>); positions have been precessed
+        from the catalogue's B1950 coordinates to J2000.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -107,29 +131,38 @@
   <div class="wrap narrow">
     <h2>Observing strategy</h2>
     <p>
-      Per source, and only where we lack these data in the archive or in our other projects, we observe
-      1&nbsp;hour in the A-array, 30&nbsp;minutes in B, 15&nbsp;minutes in C and 5&nbsp;minutes in D. Scheduling
-      permitting, observations of different sources are interleaved to improve <em>uv</em> coverage.
+      Per source and per band, and only where we lack these data in the archive or in our other projects, we
+      observe 1&nbsp;hour in the A-array, 30&nbsp;minutes in B, 15&nbsp;minutes in C and 5&nbsp;minutes in D.
+      Scheduling permitting, observations of different sources are interleaved to improve <em>uv</em> coverage.
     </p>
     <p>
-      Accounting for 40% overheads due to slew times and polarisation calibration, this totals
-      218.3&nbsp;hours in the A-array, 92.5&nbsp;hours in B, 31.7&nbsp;hours in C and 2.5&nbsp;hours in D &mdash;
-      <strong>345 hours</strong>. Full polarimetric observations use the 8-bit samplers at L-band and the 3-bit
-      samplers at C-band.
+      That comes to 207&nbsp;hours on source. Accounting for 40% overheads due to slew times and polarisation
+      calibration, the total requested is <strong>345 hours</strong>. Full polarimetric observations use the
+      8-bit samplers at L-band and the 3-bit samplers at C-band.
     </p>
     <div class="table-scroll" style="margin-top:1.6rem">
       <table>
         <thead>
-          <tr><th>Array</th><th>Per source</th><th>Total requested</th></tr>
+          <tr>
+            <th>Array</th>
+            <th>Per source, per band</th>
+            <th style="text-align:right">On source</th>
+            <th style="text-align:right">Incl. overheads</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>A</td><td>1 hour</td><td>218.3 h</td></tr>
-          <tr><td>B</td><td>30 min</td><td>92.5 h</td></tr>
-          <tr><td>C</td><td>15 min</td><td>31.7 h</td></tr>
-          <tr><td>D</td><td>5 min</td><td>2.5 h</td></tr>
+          <tr><td>A</td><td>1 hour</td><td style="text-align:right">131.0 h</td><td style="text-align:right">218.3 h</td></tr>
+          <tr><td>B</td><td>30 min</td><td style="text-align:right">55.5 h</td><td style="text-align:right">92.5 h</td></tr>
+          <tr><td>C</td><td>15 min</td><td style="text-align:right">19.0 h</td><td style="text-align:right">31.7 h</td></tr>
+          <tr><td>D</td><td>5 min</td><td style="text-align:right">1.5 h</td><td style="text-align:right">2.5 h</td></tr>
+          <tr><td><strong>Total</strong></td><td>&mdash;</td><td style="text-align:right"><strong>207.0 h</strong></td><td style="text-align:right"><strong>345.0 h</strong></td></tr>
         </tbody>
       </table>
     </div>
+    <p style="margin-top:1.4rem">
+      Split by band, this is 94.2&nbsp;hours on source at L-band and 112.8&nbsp;hours at C-band. One source,
+      3C&nbsp;438, is already fully covered by existing JVLA data and needs no new time.
+    </p>
   </div>
 </section>
 

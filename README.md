@@ -19,7 +19,8 @@ publications.html   Papers, related projects, pipelines
 assets/style.css    All styling. Colours are in the :root block at the top.
 assets/sample-table.js  Renders the target table from data/sources.csv
 assets/img/         Figures (taken from the accepted proposal)
-data/sources.csv    The target list — edit this, not the HTML
+data/sources.csv    All 172 3CRR entries, with our 73 targets flagged — edit this, not the HTML
+tools/build_sources.py  Regenerates data/sources.csv from the project spreadsheet
 .nojekyll           Tells GitHub Pages to serve the files as-is
 ```
 
@@ -34,48 +35,60 @@ now:
 - `data.html` — release status, where the FITS images will be served from, and
   the acknowledgement text
 - `index.html` — the NRAO project code, in the footer comment
-- `data/sources.csv` — the real 73 targets (currently five example rows)
 
-## The target list
+## The catalogue table
 
-`data/sources.csv` drives the Sample page: the table, the column sorting and the
-status filter all come from it. Columns:
+`data/sources.csv` drives the Sample page: the table, its sorting and the filter
+menu all come from it. It holds **all 172 3CRR entries**, with positions precessed
+to J2000. The 73 programme targets are flagged and highlighted on the page;
+everything else carries a short reason for exclusion.
 
 | Column | Meaning |
 |---|---|
-| `name` | Source name, e.g. `3C 123` |
-| `iau_name` | IAU designation, e.g. `0433+295` |
-| `ra_j2000`, `dec_j2000` | Position, any consistent format |
-| `z` | Redshift (sorts numerically) |
-| `size_arcsec` | Largest angular size in arcsec (sorts numerically) |
-| `fr_class` | `I` or `II` |
-| `arrays` | Arrays requested, e.g. `"A, B, C"` — quote it, it contains commas |
-| `status` | Free text; drives the filter menu. Suggested: Scheduled / Observed / Calibrated / Imaged / Released |
-| `notes` | Anything else worth showing |
+| `name` | Source name as in the 3CRR catalogue, e.g. `3C123` |
+| `ra_j2000`, `dec_j2000` | Position, sexagesimal, precessed from the catalogue's B1950 coordinates |
+| `z` | Redshift |
+| `s178_jy` | 178 MHz flux density, Jy |
+| `alpha` | Spectral index |
+| `las_arcsec` | Largest angular size, arcsec |
+| `size_kpc` | Projected linear size, kpc |
+| `in_sample` | `yes` for the 73 programme targets, `no` otherwise |
+| `excluded` | Why an entry is not a target: `z ≥ 1`, `LAS ≥ 240″`, `Compact`, `No LAS tabulated`. Empty for targets. |
+| `l_a`, `l_b`, `l_c` | L-band, A/B/C array |
+| `c_a`, `c_b`, `c_c`, `c_d` | C-band, A/B/C/D array |
+| `notes` | Free text, shown in the search index |
 
-Empty values render as a dash. Lines beginning with `#` are ignored, so you can
-keep comments in the file.
+Each of the seven band/array columns holds one of three things:
 
-If you already have the sample as an astropy table or a pandas DataFrame,
-writing the file is one line:
+- **a number** — on-source minutes for a new observation in this programme;
+  rendered as a solid chip
+- **`archival`** — usable data already exist in the archive; rendered as an
+  outlined chip
+- **empty** — not required for this source, or not a programme target
 
-```python
-import pandas as pd
+Times are **on source**, excluding JVLA overheads. The 345 hours requested in the
+proposal includes a 40% overhead; on source that is 207 hours. Entries outside the
+programme are left blank in these columns deliberately — the spreadsheet's time
+values for z ≥ 1 rows are a wish list, not this allocation.
 
-df = df.rename(columns={
-    "Name": "name", "IAU": "iau_name", "RA": "ra_j2000", "Dec": "dec_j2000",
-    "z": "z", "LAS": "size_arcsec", "FR": "fr_class",
-})
-df["arrays"] = "A, B"          # or whatever applies per source
-df["status"] = "Scheduled"
-df["notes"] = ""
+### Regenerating it from the spreadsheet
 
-cols = ["name", "iau_name", "ra_j2000", "dec_j2000", "z",
-        "size_arcsec", "fr_class", "arrays", "status", "notes"]
-df[cols].to_csv("data/sources.csv", index=False)
+`tools/build_sources.py` takes the project spreadsheet (the full 172-row 3CRR
+catalogue with B1950 positions and the `Total time …` / `Existing …` columns),
+applies the selection, precesses every position with astropy, divides the times
+by the 0.6 overhead ratio, and writes `data/sources.csv`:
+
+```
+pip install pandas astropy
+python3 tools/build_sources.py "3CRR - Desired 1.csv" data/sources.csv
 ```
 
-Then upload the file over the old one in the repository.
+It prints the counts and the total time so you can check them against the
+proposal — it should say 172 catalogue entries, 73 programme targets, 345.0 h.
+Then upload the new `data/sources.csv` over the old one in the repository.
+
+If you would rather edit by hand, the file is ordinary CSV: lines beginning with
+`#` are ignored, and empty values render as a dash.
 
 ## Previewing locally
 

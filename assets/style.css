@@ -263,6 +263,14 @@ figcaption { font-size: 0.85rem; color: var(--dim); margin-top: 0.8em; }
 
 .table-scroll { overflow-x: auto; border: 1px solid var(--line-soft); border-radius: var(--radius); }
 
+/* Long reference tables scroll inside their own box so the column headings
+   stay visible. A sticky <thead> only works inside a scroll container, which
+   is why this needs the height cap. */
+.table-scroll.tall { max-height: 72vh; overflow: auto; }
+
+/* a wider container, for the catalogue table only */
+.wrap-wide { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
 table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
 
 thead th {
@@ -281,6 +289,25 @@ tbody td { padding: 9px 14px; border-bottom: 1px solid var(--line-soft); }
 tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
 tbody td:first-child { font-weight: 600; white-space: nowrap; }
 
+/* rows belonging to this programme's 73 targets */
+tbody tr.in-sample { background: rgba(255, 143, 69, 0.06); color: var(--text); }
+tbody tr.in-sample:hover { background: rgba(255, 143, 69, 0.11); }
+tbody tr.in-sample td:first-child { box-shadow: inset 3px 0 0 var(--accent); color: var(--accent); }
+tbody tr:not(.in-sample) { color: var(--muted); }
+
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+.tag-sample { background: rgba(255, 143, 69, 0.16); color: var(--accent); border-color: rgba(255, 143, 69, 0.4); }
+.tag-out    { background: transparent; color: var(--dim); border-color: var(--line); font-weight: 500; }
+
 .controls {
   display: flex;
   gap: 12px;
@@ -288,6 +315,29 @@ tbody td:first-child { font-weight: 600; white-space: nowrap; }
   align-items: center;
   margin: 1.5rem 0 1rem;
 }
+
+/* coverage chips in the target table */
+.chips { display: inline-flex; gap: 3px; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: default;
+  border: 1px solid transparent;
+}
+.chip-new      { background: var(--accent); color: #1a0d03; }
+.chip-archival { background: transparent; color: var(--muted); border-color: var(--muted); }
+.chip-none     { background: transparent; color: rgba(255, 255, 255, 0.14); }
+
+.legend { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; font-size: 0.86rem; color: var(--muted); margin-top: 1.1rem; }
+.legend span.k { display: inline-flex; align-items: center; gap: 7px; }
 
 .controls input, .controls select {
   background: var(--bg-2);
