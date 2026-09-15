@@ -18,7 +18,7 @@ team.html           Project members and contact
 publications.html   Papers, related projects, pipelines
 assets/style.css    All styling. Colours are in the :root block at the top.
 assets/sample-table.js  Renders the target table from data/sources.csv
-assets/img/         Figures (taken from the accepted proposal)
+assets/img/         Figures — from the accepted proposal, plus the LOFAR gallery
 data/sources.csv    All 172 3CRR entries, with our 73 targets flagged — edit this, not the HTML
 tools/build_sources.py  Regenerates data/sources.csv from the project spreadsheet
 .nojekyll           Tells GitHub Pages to serve the files as-is
@@ -123,9 +123,16 @@ Fonts in each page's `<head>`; if you prefer system fonts, delete those two
 
 ## Figures
 
-The images in `assets/img/` were extracted from the accepted proposal and are
-your team's own work. Captions on the pages describe each one; update them if
-you replace an image.
+The images in `assets/img/` are your team's own work: most were extracted from
+the accepted proposal, and the nine-panel LOFAR gallery on the Overview page
+comes from the 0.3″ 144 MHz maps supplied separately (converted from PDF to JPEG,
+with the plot frame and axes cropped off so the panels sit together cleanly).
+
+To add another source to that gallery, drop a JPEG or PNG in `assets/img/`, copy
+one `<div class="shot">` block in `index.html`, and update the source list and
+count in the caption underneath. Each panel is displayed in a square box with the
+image scaled to fit, so portrait, landscape and square maps all sit side by side
+without being cropped.
 
 ## Accessibility and good practice
 

@@ -246,6 +246,36 @@ figcaption { font-size: 0.85rem; color: var(--dim); margin-top: 0.8em; }
 .status strong { color: var(--text); }
 .status-date { font-size: 0.82rem; color: var(--dim); margin: 0; white-space: nowrap; }
 
+/* gallery of radio maps, each in a square box with a label */
+.imgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.shot { position: relative; }
+
+.shot img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.shot span {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95);
+  pointer-events: none;
+}
+
 .note {
   border-left: 3px solid var(--accent);
   background: rgba(255, 143, 69, 0.07);
